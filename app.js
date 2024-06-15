@@ -2,6 +2,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
 import { Login, Register } from "./controllers/authentication.js";
+import { AddUsersHabits, GetUserHabits } from "./controllers/userHabits.js";
 
 const app = express();
 
@@ -17,6 +18,10 @@ app.post("/register", Register);
 
 app.post("/login", Login);
 
+app.get("/getUserHabits/:userId", GetUserHabits);
+
+app.post("/addUsersHabits", AddUsersHabits);
+
 app.listen(port, () => {
-  console.log(`Example api running on ${port}`);
+  console.log(`Habit-tracker API running on port ${port}`);
 });
